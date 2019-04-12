@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="jar_14030">
+    <output-path>$PROJECT_DIR$/out/artifacts/jar_14030</output-path>
+    <root id="archive" name="jar_14030.jar">
+      <element id="module-output" name="ES_aula01_java" />
+      <element id="file-copy" path="$PROJECT_DIR$/../../Tarefa_Compra_Livros.pdf" />
+    </root>
+  </artifact>
+</component>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_es_aula01_java" default="compile.module.es_aula01_java">
+  <dirname property="module.es_aula01_java.basedir" file="${ant.file.module_es_aula01_java}"/>
+  
+  <property name="module.jdk.home.es_aula01_java" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.es_aula01_java" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.es_aula01_java" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.es_aula01_java" value="-encoding UTF-8 -source 8 -target 8 ${compiler.args}"/>
+  
+  <property name="es_aula01_java.output.dir" value="${module.es_aula01_java.basedir}/out/production/ES_aula01_java"/>
+  <property name="es_aula01_java.testoutput.dir" value="${module.es_aula01_java.basedir}/out/test/ES_aula01_java"/>
+  
+  <path id="es_aula01_java.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="es_aula01_java.module.production.classpath">
+    <path refid="${module.jdk.classpath.es_aula01_java}"/>
+  </path>
+  
+  <path id="es_aula01_java.runtime.production.module.classpath">
+    <pathelement location="${es_aula01_java.output.dir}"/>
+  </path>
+  
+  <path id="es_aula01_java.module.classpath">
+    <path refid="${module.jdk.classpath.es_aula01_java}"/>
+    <pathelement location="${es_aula01_java.output.dir}"/>
+  </path>
+  
+  <path id="es_aula01_java.runtime.module.classpath">
+    <pathelement location="${es_aula01_java.testoutput.dir}"/>
+    <pathelement location="${es_aula01_java.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.es_aula01_java">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.es_aula01_java">
+    <patternset refid="excluded.from.module.es_aula01_java"/>
+  </patternset>
+  
+  <path id="es_aula01_java.module.sourcepath">
+    <dirset dir="${module.es_aula01_java.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.es_aula01_java" depends="compile.module.es_aula01_java.production,compile.module.es_aula01_java.tests" description="Compile module ES_aula01_java"/>
+  
+  <target name="compile.module.es_aula01_java.production" depends="register.custom.compilers" description="Compile module ES_aula01_java; production classes">
+    <mkdir dir="${es_aula01_java.output.dir}"/>
+    <javac2 destdir="${es_aula01_java.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.es_aula01_java}/javac">
+      <compilerarg line="${compiler.args.es_aula01_java}"/>
+      <bootclasspath refid="es_aula01_java.module.bootclasspath"/>
+      <classpath refid="es_aula01_java.module.production.classpath"/>
+      <src refid="es_aula01_java.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.es_aula01_java"/>
+    </javac2>
+    
+    <copy todir="${es_aula01_java.output.dir}">
+      <fileset dir="${module.es_aula01_java.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.es_aula01_java.tests" depends="register.custom.compilers,compile.module.es_aula01_java.production" description="compile module ES_aula01_java; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.es_aula01_java" description="cleanup module">
+    <delete dir="${es_aula01_java.output.dir}"/>
+    <delete dir="${es_aula01_java.testoutput.dir}"/>
+  </target>
+</project>
