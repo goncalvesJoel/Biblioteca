@@ -3,11 +3,11 @@ public class Utilizador {
     String nome;
     String estado;
     TipoUtilizador TipoUtilizador;
-	
-    public Utilizador(String nome, String estado) {
-		super();
+
+	public Utilizador(String nome, String estado, TipoUtilizador tipoUtilizador) {
 		this.nome = nome;
 		this.estado = estado;
+		TipoUtilizador = tipoUtilizador;
 	}
 
 	public String getNome() {
