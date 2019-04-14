@@ -1,7 +1,8 @@
+
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class RepositorioMem extends Repositorio {
+public class RepositorioMem implements Repositorio{
 
     ArrayList<Utilizador> ListaUtilizadores = new ArrayList();
     ArrayList<TipoUtilizador> ListaTipoUtilizadores = new ArrayList();
@@ -16,9 +17,6 @@ public class RepositorioMem extends Repositorio {
     ArrayList<PropostaAquisicao> Lista_propostaAquisicao = new ArrayList();
     ArrayList<RequisicaoCompra> Lista_requisicaoCompra = new ArrayList();
     ArrayList<EntradaNovoLivro> Lista_entradaNovoLivro = new ArrayList();
-
-    public RepositorioMem() {
-    }
 
 
     public void adicionaRequisicaoCompra(RequisicaoCompra requisicaoCompra) {

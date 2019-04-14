@@ -17,7 +17,7 @@ public class Main {
 
         rm.adicionaEncomenda(encomenda);
         rm.adicionaEntradaNovoLivro(entradaNovoLivro);
-        rm.mostraPint();
+
 
 
     }
